@@ -1,8 +1,6 @@
-import { config } from 'dotenv'
 import { Telegraf } from 'telegraf'
+import { getLatestEntries } from './calendar'
 import { getRandomReaction } from './reactions'
-
-config()
 
 const bot = new Telegraf(process.env.BOT_TOKEN!)
 // bot.start((ctx) => ctx.reply('Welcome'))
@@ -15,6 +13,7 @@ bot.hears(/maximus/i, getRandomReaction("elthiadore"))
 bot.hears(/balos/i, getRandomReaction("balos"))
 bot.hears(/vhucthul/i, getRandomReaction("vhucthul"))
 bot.hears(/zork/i, getRandomReaction("zork"))
+bot.command("termine", getLatestEntries)
 bot.launch()
 
 // Enable graceful stop

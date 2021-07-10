@@ -4,7 +4,7 @@ import { getRandomIntInclusive } from "./utilities"
 
 export const Reactions = {
   zork: [
-    (ctx: Context)=> ctx.reply(`${ctx.from?.username}, du Made wagst es, meinen Namen auszusprechen! Der Tod soll dich holen!`),
+    (ctx: Context)=> ctx.reply(`${ctx.from?.first_name ?? ctx.from?.username}, du Made wagst es, meinen Namen auszusprechen! Der Tod soll dich holen!`),
     (ctx: Context) => ctx.reply("Schweigt still! Ich werde euch vernichten!"),
     (ctx: Context) => ctx.reply("Die Herren der Drachen werden Untergehen!"),
     (ctx: Context) => ctx.replyWithAnimation("https://media.giphy.com/media/lcFSmTvaSxwSk/giphy.gif"),

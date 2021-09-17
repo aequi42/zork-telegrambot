@@ -18,13 +18,13 @@ export async function getLatestEntries(ctx: Context) {
   var events = getEvents(eventComponents);
   var upcoming = events.filter((e) => e.date > new Date());
 
-  console.log("ALL upcoming");
-  upcoming.forEach((ev) =>
-    console.log(`${ev.name} - ${ev.date.toLocaleDateString("de")}`)
-  );
-  console.log("END");
+  // console.log("ALL upcoming");
+  // upcoming.forEach((ev) =>
+  //   console.log(`${ev.name} - ${ev.date.toLocaleDateString("de")}`)
+  // );
+  // console.log("END");
   ctx.reply(`🗓️ Wir sehen uns bei folgenden Schlachten, ihr Würmer!
-${upcoming.map(
+${upcoming.sort((a,b)=>a.date-b.date).map(
   (u) =>
     `${u.name} - ${u.date.toLocaleString("de-DE", {
       timeZone: "UTC",

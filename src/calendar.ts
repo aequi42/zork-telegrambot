@@ -24,15 +24,17 @@ export async function getLatestEntries(ctx: Context) {
   // );
   // console.log("END");
   ctx.reply(`🗓️ Wir sehen uns bei folgenden Schlachten, ihr Würmer!
-${upcoming.sort((a,b)=>a.date-b.date).map(
-  (u) =>
-    `${u.name} - ${u.date.toLocaleString("de-DE", {
-      timeZone: "UTC",
-      day: "2-digit",
-      month: "2-digit",
-      year: "numeric",
-    })}`
-).join(`
+${upcoming
+  .sort((a, b) => a.date.getTime() - b.date.getTime())
+  .map(
+    (u) =>
+      `${u.name} - ${u.date.toLocaleString("de-DE", {
+        timeZone: "UTC",
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+      })}`
+  ).join(`
 `)}
   `);
 }
